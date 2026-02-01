@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/melis_app/static/css/main.608bee14.css",
-    "main.js": "/melis_app/static/js/main.b2e1a0ab.js",
+    "main.js": "/melis_app/static/js/main.432b9e83.js",
     "static/js/453.0d42b028.chunk.js": "/melis_app/static/js/453.0d42b028.chunk.js",
     "static/media/logo.svg": "/melis_app/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/melis_app/index.html",
     "main.608bee14.css.map": "/melis_app/static/css/main.608bee14.css.map",
-    "main.b2e1a0ab.js.map": "/melis_app/static/js/main.b2e1a0ab.js.map",
+    "main.432b9e83.js.map": "/melis_app/static/js/main.432b9e83.js.map",
     "453.0d42b028.chunk.js.map": "/melis_app/static/js/453.0d42b028.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.608bee14.css",
-    "static/js/main.b2e1a0ab.js"
+    "static/js/main.432b9e83.js"
   ]
 }
