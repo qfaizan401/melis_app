@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import { Box, Button, Typography, Paper } from '@mui/material';
 
 function ValentineForm() {
-    const [stage, setStage] = useState(0); // 0: Valentine, 1: Marriage, 2: Final
+    const [stage, setStage] = useState(0); // 0: Valentine, 1: Marriage, 2: Kids, 3: Final
     const [noButtonPos, setNoButtonPos] = useState({ top: '0px', left: '0px', position: 'relative' });
     const [noButtonScale, setNoButtonScale] = useState(1);
+    const [noButtonRotation, setNoButtonRotation] = useState(0);
 
     const moveNoButton = () => {
         const randomTop = Math.floor(Math.random() * 70) + 10 + '%';
         const randomLeft = Math.floor(Math.random() * 70) + 10 + '%';
 
-        // In marriage stage, make the button smaller as it moves
+        // As stages progress, make it crazier
         if (stage === 1) {
             setNoButtonScale(prev => Math.max(0.05, prev - 0.15));
+        } else if (stage === 2) {
+            setNoButtonScale(prev => Math.max(0.01, prev - 0.2));
+            setNoButtonRotation(prev => prev + 90);
         }
 
         setNoButtonPos({
@@ -24,25 +28,26 @@ function ValentineForm() {
     };
 
     const handleYes = () => {
-        if (stage < 2) {
+        if (stage < 3) {
             setStage(stage + 1);
             // Reset no button for next stage
             setNoButtonPos({ top: '0px', left: '0px', position: 'relative' });
             setNoButtonScale(1);
+            setNoButtonRotation(0);
         }
     };
 
-    if (stage === 2) {
+    if (stage === 3) {
         return (
             <Box sx={{ mt: 4, textAlign: 'center' }}>
                 <Typography variant="h2" sx={{ fontWeight: 'bold', color: '#d81b60', mb: 2, textShadow: '2px 2px 4px rgba(0,0,0,0.2)' }}>
-                    ME AND MELIS FOREVER! 💍💒👰‍♀️🤵‍♂️
+                    ME AND MELIS FOREVER! 💍💒👰‍♀️🤵‍♂️🍼👶
                 </Typography>
                 <Typography variant="h4" sx={{ color: '#ad1457', fontStyle: 'italic' }}>
-                    I am the luckiest person in the world! ❤️✨
+                    The luckiest parents in the world! ❤️✨
                 </Typography>
                 <Box sx={{ mt: 4, fontSize: '4rem' }}>
-                    ✨💖🕊️💍🥂🍰🎉
+                    ✨💖🏘️👨‍👩‍👧‍👦🕊️💍🥂🎉
                 </Box>
             </Box>
         );
@@ -58,6 +63,11 @@ function ValentineForm() {
             title: "Will You Marry Me? 💍✨",
             emojis: "💍👰‍♀️🤵‍♂️💒🥂",
             noBtnText: "Wait... No?"
+        },
+        {
+            title: "Will you be the mother of our kidsss? 👶🍼",
+            emojis: "👶🍼🏘️🧸🧺👨‍👩‍👧‍👦",
+            noBtnText: "Uhh... I'll think?"
         }
     ][stage];
 
@@ -107,7 +117,7 @@ function ValentineForm() {
                         borderRadius: 10,
                         px: 4,
                         ...noButtonPos,
-                        transform: `scale(${noButtonScale})`,
+                        transform: `scale(${noButtonScale}) rotate(${noButtonRotation}deg)`,
                         transition: 'all 0.2s ease-out',
                         opacity: noButtonScale < 0.2 ? 0.2 : 1
                     }}
