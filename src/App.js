@@ -26,6 +26,9 @@ function App() {
           </div>
           <ValentineForm />
         </header>
+        <footer className="App-footer">
+          created by your only medo ❤️
+        </footer>
       </div>
     </ThemeProvider>
   );
